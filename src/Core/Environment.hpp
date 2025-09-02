@@ -133,12 +133,10 @@ namespace core
 		bool RemoveObject(uint32_t id);
 
 		template <typename SearchPolicy = search_policy::AllObjects>
-		UnitsVector GetObjectsInRange(const features::Object& object, uint32_t min_r, uint32_t max_r) const
+		UnitsVector GetObjectsInRange(const unit32_t pos_x, const unit32_t pos_y, uint32_t min_r, uint32_t max_r) const
 		{
 			UnitsVector res;
 
-			uint32_t pos_x = object.GetX();
-			uint32_t pos_y = object.GetY();
 			uint32_t idx = 0;
 			for (int dy = -static_cast<int>(max_r); dy <= static_cast<int>(max_r); ++dy)
 			{
@@ -175,9 +173,9 @@ namespace core
 		}
 
 		template <typename SearchPolicy = search_policy::AllObjects>
-		UnitsVector GetAdjacentObjects(const features::Object& object) const
+		UnitsVector GetAdjacentObjects(const unit32_t pos_x, const unit32_t pos_y) const
 		{
-			return GetObjectsInRange<SearchPolicy>(object, 1, 1);
+			return GetObjectsInRange<SearchPolicy>(pos_x, pos_y, 1, 1);
 		}
 
 		void MoveToDead(uint32_t id);

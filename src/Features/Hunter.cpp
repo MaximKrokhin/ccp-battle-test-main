@@ -9,7 +9,7 @@ namespace features::units
 
 	void Hunter::Act(core::Environment& env)
 	{
-		auto distant = env.GetObjectsInRange<core::search_policy::AliveOnly>(*this, 2, range);
+		auto distant = env.GetObjectsInRange<core::search_policy::AliveOnly>(this->GetX(), this->GetY(), 2, range);
 		if (!distant.empty())
 		{
 			auto& target = *distant[rand() % distant.size()];
@@ -17,7 +17,7 @@ namespace features::units
 			return;
 		}
 
-		auto adjacent = env.GetAdjacentObjects<core::search_policy::AliveOnly>(*this);
+		auto adjacent = env.GetAdjacentObjects<core::search_policy::AliveOnly>(this->GetX(), this->GetY());
 		if (!adjacent.empty())
 		{
 			auto& target = *adjacent[rand() % adjacent.size()];

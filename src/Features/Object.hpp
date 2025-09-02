@@ -47,6 +47,16 @@ namespace features
 			return y;
 		}
 
+		uint32_t& GetX()
+		{
+			return x;
+		}
+
+		uint32_t& GetY()
+		{
+			return y;
+		}
+
 		void SetPos(uint32_t new_x, uint32_t new_y)
 		{
 			x = new_x;

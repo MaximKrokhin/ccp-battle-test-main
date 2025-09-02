@@ -9,7 +9,7 @@ namespace features::units
 
 	void Swordsman::Act(core::Environment& env)
 	{
-		auto adjacent = env.GetAdjacentObjects<core::search_policy::AliveOnly>(*this);
+		auto adjacent = env.GetAdjacentObjects<core::search_policy::AliveOnly>(this->GetX(), this->GetY());
 		if (!adjacent.empty())
 		{
 			auto& target = *adjacent[rand() % adjacent.size()];
